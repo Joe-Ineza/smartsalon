@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Appointment Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>Appointments</h1>
+    <button class="btn btn-secondary" id="sortButton">Sort by Date</button>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Client Name</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Booked Date and Time</th>
+            <th>Employee</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="appointmentDTO : ${appointments}">
+            <td th:text="${appointmentDTO.id}"></td>
+            <td th:text="${appointmentDTO.customer.name}"></td>
+            <td th:text="${appointmentDTO.customer.phoneNumber}"></td>
+            <td th:text="${appointmentDTO.customer.email}"></td>
+            <td th:text="${appointmentDTO.getDateTime()}"></td>
+            <td th:text="${appointmentDTO.staff.name}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="/appointment/create">New Appointment</a>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function() {
+        // Add click event listener to the sort button
+        $('#sortButton').click(function() {
+            // Get the table body and its rows
+            var tableBody = $('tbody');
+            var tableRows = tableBody.find('tr');
+
+            // Sort the rows by StartDateTime and EndDateTime
+            tableRows.sort(function(a, b) {
+                var aStart = $(a).find('td:nth-child(5)').text();
+                var bStart = $(b).find('td:nth-child(5)').text();
+                var aEnd = $(a).find('td:nth-child(6)').text();
+                var bEnd = $(b).find('td:nth-child(6)').text();
+                return new Date(aStart) - new Date(bStart) || new Date(aEnd) - new Date(bEnd);
+            });
+
+            // Clear the table body and append the sorted rows
+            tableBody.empty().append(tableRows);
+        });
+    });
+</script>
+
+</body>
+</html>

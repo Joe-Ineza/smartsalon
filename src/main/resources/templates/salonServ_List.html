@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Salon Service List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1>Salon Service List</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Gender</th>
+            <th>Service Offered</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="salonServ : ${salonServList}">
+            <td th:text="${salonServ.gender}"></td>
+            <td th:text="${salonServ.serviceOffered}"></td>
+            <td th:text="${salonServ.price}"></td>
+            <td>
+                <a th:href="@{/salonServ/{id}(id=${salonServ.id})}" class="btn btn-primary btn-sm">View</a>
+                <a th:href="@{/salonServ/{id}/edit(id=${salonServ.id})}" class="btn btn-secondary btn-sm">Edit</a>
+                <form th:action="@{/salonServ/{id}/delete(id=${salonServ.id})}" method="post" style="display: inline-block;">
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/salonServ/create}" class="btn btn-primary">Create New Salon Service</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>

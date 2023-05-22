@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Salon Service</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+  <h1>Edit Salon Service</h1>
+  <form th:action="@{/salonServ/{id}/edit(id=${salonServ.id})}" th:object="${salonServ}" method="post">
+    <div class="form-group">
+      <label for="gender">Gender:</label>
+      <select class="form-control" id="gender" th:field="*{gender}" required>
+        <option value="Male" th:selected="${salonServ.gender == 'Male'}">Male</option>
+        <option value="Female" th:selected="${salonServ.gender == 'Female'}">Female</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="serviceOffered">Service Offered:</label>
+      <input type="text" class="form-control" id="serviceOffered" th:field="*{serviceOffered}" required>
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input type="text" class="form-control" id="price" th:field="*{price}" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a th:href="@{/salonServs}" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>

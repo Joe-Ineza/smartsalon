@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Role</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Edit Role</h1>
+    <form th:action="@{'/security/roles/edit/' + ${role.id}}" method="post" th:object="${role}">
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" class="form-control" id="description" name="description" th:field="*{description}" required>
+        </div>
+        <div class="form-group">
+            <label for="role">Role</label>
+            <input type="text" class="form-control" id="role" name="role" th:field="*{details}" required>
+        </div>
+        <div class="form-group">
+            <label for="user">User</label>
+            <select class="form-control" id="user" name="userId">
+                <!-- Render the selected user -->
+                <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.getUserName()}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../static/css/stylehome.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="icon" type="image/x-icon" href="../static/img/coffee.jpg">
+  <title>home</title>
+</head>
+
+<div class="navbar">
+  <div class="logo">
+    <a href="@{/index}"><strong style="color: darksalmon">Smart</strong> Salon</a>
+
+  </div>
+
+
+  <ul class="links">
+    <li><a href="/register">Register</a></li>
+    <li><a href="/login">Log In</a></li>
+
+
+
+  </ul>
+
+    <a href="/register" class="action_btn">Get Started</a>
+
+    <div class="toggle_btn">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+</div>
+    <div class="dropdown_menu">
+      <li><a href="/register">REGISTER</a></li>
+      <li><a href="/login"></a>LOG IN</li>
+      <li><a href="/register" class="action_btn">Get Started</a></li>
+
+    </div>
+
+    <main>
+      <section id="hero" >
+        <br><br><br><br><br><br>
+
+        <h1 style="text-align:center;"><strong style="color: darksalmon">Smart Salon</strong> </h1>
+        <section class="slideshow" style=" margin-top: -150px;">
+          <div class="content">
+            <div class="content-carrousel">
+              <figure class ="shadow"><img src="../static/img/Nyungwe_National_Park.jpg"></figure>
+              <figure class ="shadow"><img src="../static/img/GDWrU0.jpg"></figure>
+              <figure class ="shadow"><img src="../static/img/rwanda-kigali-64waves-sunset.jpg"></figure>
+              <figure class ="shadow"><img src="../static/img/wp2017235.jpg"></figure>
+              <figure class ="shadow"><img src="../static/img/3950692.jpg"></figure>
+              <figure class ="shadow"><img src="../static/img/cricket-things-to-do-in-kigali-rwanda_104ce97a70.jpeg"></figure>
+              <figure class ="shadow"><img src="../static/img/photo-1523050854058-8df90110c9f1.jpeg"></figure>
+              <figure class ="shadow"><img src="../static/img/wp2468647.jpg"></figure>
+              <figure class ="shadow"><img src="../static/img/rwanda-kigali-64waves-sunset.jpg"></figure>
+            </div>
+          </div>
+        </section>
+
+      </section>
+
+
+    </main>
+
+  </ul>
+
+
+    <script>
+      const toggleBtn = document.querySelector('.toggle_btn')
+      const toggleBtnIcon = document.querySelector('.toggle_btn i')
+      const dropDownMenu = document.querySelector('.dropdown_menu')
+
+      toggleBtn.onclick = function ()
+      {
+        dropDownMenu.classList.toggle('open')
+        const isOpen = dropDownMenu.classList.contains('open')
+
+        toggleBtnIcon.classList = isOpen
+                ? 'fa-solid fa-bars'
+                : 'fa-solid fa-bars'
+      }
+    </script>
+  </body>
+  </html>

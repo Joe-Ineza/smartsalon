@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Add your page title, stylesheets, and other metadata -->
+</head>
+<body>
+<script th:inline="javascript">
+    showConfirmationDialog();
+</script>
+<script th:inline="javascript">
+    function showConfirmationDialog() {
+        var confirmed = confirm("Do you want to Login Instead?");
+        if (confirmed) {
+            window.location.href = '/login';
+        } else {
+            window.location.href = '/register';
+        }
+    }
+</script>
+</body>
+</html>
